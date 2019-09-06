@@ -4,4 +4,12 @@
 
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
+  <servlet>
+    <servlet-name>PostApiServlet</servlet-name>
+    <servlet-class>com.qingli.PostAPIServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PostApiServlet</servlet-name>
+    <url-pattern>/api</url-pattern>
+  </servlet-mapping>
 </web-app>
