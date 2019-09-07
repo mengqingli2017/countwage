@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> 后台登录管理系统</title>
+    <meta charset="utf-8" name="viewport"
+          content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <link href="css/style.css" rel="stylesheet" type="text/css"/>
+    <!-- <script src="js/vue.js" type="text/javascript" charset="utf-8"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
+    <!--<script src="https://cdn.jsdelivr.net/npm/vant@2.1/lib/vant.min.js"></script>-->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <!--<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vant@2.1/lib/index.css">-->
+</head>
+
+<body>
+<div class="padding-all">
+    <div class="header">
+        <h1>登录系统管理</h1>
+    </div>
+
+    <div id="app" class="design-w3l">
+        <div class="mail-form-agile">
+            <form action="#" method="post">
+                <input type="text" v-model="name" :placeholder="'请输入用户名'" required=""/>
+                <input type="password" v-model="password" class="padding" placeholder="请输入密码" required=""/>
+                <input type="submit" value="登录" @click.prevent="login">
+            </form>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>© 2019 后台管理系统. 版权所有 </p>
+    </div>
+</div>
+<script type="text/jscript">
+		//可以将axios这个对象添加到Vue的原型对象中，将来在使用的时候就只需要使用this.对象名就可以了
+	    Vue.prototype.$http = axios;
+				var app=new Vue({
+					el:"#app",
+					data:{
+						name:"",
+						password:""
+
+					},
+					methods:{
+						login:function(){
+							var url="http://localhost:8080/countwage_controller_war/api";
+							//将返回的数据给_this封装
+							this.$http.post(url,{"name":this.name,"password":this.password}).then(res=>{
+								console.log('res=>',res);
+							})
+						}
+					}
+				})
+
+</script>
+</body>
+</html>
